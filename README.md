@@ -37,8 +37,10 @@ From the repository root:
 
 ```bash
 cd backend
-mvn spring-boot:run
+./mvnw spring-boot:run
 ```
+
+On Windows PowerShell, use `.\mvnw.cmd spring-boot:run` instead. The Maven Wrapper downloads the required Maven version automatically, so a global Maven installation is not required.
 
 The API starts at `http://localhost:8080`.
 
@@ -46,9 +48,11 @@ To build and run a JAR instead:
 
 ```bash
 cd backend
-mvn clean package
+./mvnw clean package
 java -jar target/linknest-api-1.0.0.jar
 ```
+
+On Windows PowerShell, use `.\mvnw.cmd clean package` instead.
 
 ## Run the frontend
 
