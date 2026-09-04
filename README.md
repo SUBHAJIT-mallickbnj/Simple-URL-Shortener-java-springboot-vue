@@ -91,6 +91,14 @@ Inspect a mapping with `GET /api/urls/{shortCode}`. Redirect with `GET /{shortCo
 
 ## Render and Vercel deployment
 
+### Live deployment
+
+- Frontend: https://linknest-web.vercel.app
+- Backend API: https://linknest-api-sqoh.onrender.com
+- Backend health: https://linknest-api-sqoh.onrender.com/api/urls/health
+
+The Vercel frontend uses the Render backend through `VITE_API_URL`. The Render backend uses MongoDB Atlas through `MONGODB_URI`; short-link records and click counts are stored in the `linknest` database.
+
 Create a MongoDB Atlas cluster and database user first. Atlas provides the connection string; no separate database ID is required. Keep the password private.
 
 Deploy the `backend` directory as a Render Web Service:
@@ -102,14 +110,14 @@ Set these Render environment variables:
 
 ```text
 MONGODB_URI=mongodb+srv://USERNAME:PASSWORD@CLUSTER.mongodb.net/linknest?retryWrites=true&w=majority
-PUBLIC_URL=https://your-render-service.onrender.com
-FRONTEND_URL=https://your-vercel-app.vercel.app
+PUBLIC_URL=https://linknest-api-sqoh.onrender.com
+FRONTEND_URL=https://linknest-web.vercel.app
 ```
 
 Deploy the `frontend` directory to Vercel and set:
 
 ```text
-VITE_API_URL=https://your-render-service.onrender.com
+VITE_API_URL=https://linknest-api-sqoh.onrender.com
 ```
 
 The Vercel build command is `npm run build` and the output directory is `dist`.
