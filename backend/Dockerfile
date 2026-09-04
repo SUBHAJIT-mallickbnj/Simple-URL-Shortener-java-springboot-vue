@@ -1,12 +1,12 @@
 FROM maven:3.9.11-eclipse-temurin-21 AS build
 
 WORKDIR /app
-COPY pom.xml .
-COPY .mvn .mvn
-COPY mvnw .
-COPY mvnw.cmd .
+COPY backend/pom.xml .
+COPY backend/.mvn .mvn
+COPY backend/mvnw .
+COPY backend/mvnw.cmd .
 RUN chmod +x mvnw
-COPY src src
+COPY backend/src src
 RUN ./mvnw -B clean package -DskipTests
 
 FROM eclipse-temurin:21-jre
